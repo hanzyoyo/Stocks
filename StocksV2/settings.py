@@ -82,6 +82,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATES_DIR = ('/Users/Hanzyoyo/www/StocksV2/templates')
+TEMPLATES_DIR = ('/Users/Hanzyoyo/www/StocksV2/templates/')
 
-APPEND_SLASH = true #ajoute un slash automatiquement a la fin de l'adresse
+APPEND_SLASH = True #ajoute un slash automatiquement a la fin de l'adresse

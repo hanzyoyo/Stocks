@@ -11,39 +11,39 @@ class Evenement(models.Model):
 	duree_creneau = 15
 
 	date_paps = models.DateTimeField(u'Date du paps')
-        date_evenement = models.DateTimeField(u'Date de l\'événement')
+	date_evenement = models.DateTimeField(u'Date de l\'événement')
 	total_kebabs = models.IntegerField(max_length = 3)
 	kebabs_par_creneaux = models.IntegerField(max_length = 2)
 
 	#override de l'affichage dans l'interface admin
 	class Meta:
-                verbose_name = u'Événement'
-                verbose_name_plural = u'Événements'
-                get_latest_by = u'date_evenement'
+		verbose_name = u'Événement'
+		verbose_name_plural = u'Événements'
+		get_latest_by = u'date_evenement'
 
 
 class Creneau(models.Model):
-        evenement = models.ForeignKey(Evenement)
-        kebab_restant = models.IntegerField(u'nombre de kebabs encore papsables sur ce créneau', max_length=2)
-        heure = models.DateTimeField(u'heure à laquelle il faut apporter la commande')
+	evenement = models.ForeignKey(Evenement)
+	kebab_restant = models.IntegerField(u'nombre de kebabs encore papsables sur ce créneau', max_length=2)
+	heure = models.DateTimeField(u'heure à laquelle il faut apporter la commande')
 
-        def __unicode__(self):
-                return "le " + self.date.date().isoformat() + ", reste(nt) " + str(self.kebab_restant) + " kebab(s)"
+	def __unicode__(self):
+		return "le " + self.date.date().isoformat() + ", reste(nt) " + str(self.kebab_restant) + " kebab(s)"
 
-        class Meta:
-                verbose_name = u'Créneau'
-                verbose_name_plural = u'Créneaux'
-                ordering = ['date']
+	class Meta:
+		verbose_name = 'Créneau'
+		verbose_name_plural = 'Créneaux'
+        ordering = ['heure']
 
 class Commande(models.Model):
 	creneau = models.ForeignKey(Creneau)
-        #TODO : client = models.ForeignKey('Client')
-        commande = models.IntegerField(u'Nombre de kebabs commandés')
+    #TODO : client = models.ForeignKey('Client')
+	commande = models.IntegerField(u'Nombre de kebabs commandés')
 
-        def delete(self, *args, **kwargs):
-                #On rajoute les places au créneau
-                self.creneau.kebab_restant += self.commande
-                self.creneau.save()
+	def delete(self, *args, **kwargs):
+		#On rajoute les places au créneau
+		self.creneau.kebab_restant += self.commande
+		self.creneau.save()
 
-                super(Commande, self).delete(*args, **kwargs)
+		super(Commande, self).delete(*args, **kwargs)
 
