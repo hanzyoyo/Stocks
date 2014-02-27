@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'evenement',
+	'utilisateurs',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +83,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATES_DIR = ('/Users/Hanzyoyo/www/StocksV2/templates/')
+TEMPLATE_DIRS = ('/Users/Hanzyoyo/www/StocksV2/templates/')
 
 APPEND_SLASH = True #ajoute un slash automatiquement a la fin de l'adresse
