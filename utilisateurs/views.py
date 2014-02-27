@@ -1,8 +1,7 @@
 #coding=utf-8
 
 from django.shortcuts import render,render_to_response
-from evenement.forms import ConnexionForm
-from django.contrib.auth.forms import UserCreationForm
+from utilisateurs.forms import UserCreateForm,ConnexionForm
 from django.contrib.auth import authenticate,login
 from django.template import RequestContext
 
