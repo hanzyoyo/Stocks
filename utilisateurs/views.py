@@ -12,6 +12,8 @@ def registration(request):
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			user = form.save()
+            login(request, user)
+            return render(request, 'index.html',locals())
 	else:
 		form = UserCreationForm()
 	
