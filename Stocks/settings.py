@@ -1,5 +1,5 @@
 """
-Django settings for StocksV2 project.
+Django settings for Stocks project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'StocksV2.urls'
+ROOT_URLCONF = 'Stocks.urls'
 
-WSGI_APPLICATION = 'StocksV2.wsgi.application'
+WSGI_APPLICATION = 'Stocks.wsgi.application'
 
 
 # Database
