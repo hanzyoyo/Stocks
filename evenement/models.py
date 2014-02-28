@@ -47,3 +47,10 @@ class Commande(models.Model):
 
 		super(Commande, self).delete(*args, **kwargs)
 
+    #TODO : definir le save pour retirer les kebabs du creneau une fois la commande validee par mail
+
+    def save(self, *args, **kwargs):
+        self.creneau.kebab_restant += self.commande
+        self.creneau.save()
+
+        super(Commande, self).save(*args, **kwargs)
