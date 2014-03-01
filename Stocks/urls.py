@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'StocksV2.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+	url(r'^index/$', 'evenement.views.index', name='index'),
     url(r'^register/$', 'utilisateurs.views.registration', name='registration'),
 	url(r'^connexion/$', 'utilisateurs.views.connexion', name='connexion'),
     url(r'^admin/', include(admin.site.urls)),

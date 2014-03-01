@@ -28,7 +28,7 @@ class Creneau(models.Model):
 	heure = models.DateTimeField(u'heure à laquelle il faut apporter la commande')
 
 	def __unicode__(self):
-		return "le " + self.date.date().isoformat() + ", reste(nt) " + str(self.kebab_restant) + " kebab(s)"
+		return unicode(self.heure)
 
 	class Meta:
 		verbose_name = 'Créneau'
@@ -49,8 +49,8 @@ class Commande(models.Model):
 
     #TODO : definir le save pour retirer les kebabs du creneau une fois la commande validee par mail
 
-    def save(self, *args, **kwargs):
-        self.creneau.kebab_restant += self.commande
-        self.creneau.save()
+	def save(self, *args, **kwargs):
+		self.creneau.kebab_restant -= self.commande
+		self.creneau.save()
 
-        super(Commande, self).save(*args, **kwargs)
+		super(Commande, self).save(*args, **kwargs)
